@@ -1,0 +1,20 @@
+===========
+Sample Size (N) = 5000
+===========
+
+Algorithm 1:
+Sum: 175756
+Execution Time: 9799.267 (MilliSeconds)
+
+Algorithm 2:
+Sum: 175756
+Execution Time: 8.0485 (MilliSeconds)
+
+Algorithm 3:
+Sum: 175756
+Execution Time: 1.0279 (MilliSeconds)
+
+Algorithm 4:
+Sum: 175756
+Execution Time: 0.1205 (MilliSeconds)
+

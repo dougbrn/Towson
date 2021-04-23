@@ -1,0 +1,20 @@
+===========
+Sample Size (N) = 200000
+===========
+
+Algorithm 1:
+Sum: N/A
+Execution Time: N/A (>15 minutes, so terminated as per the assignment instructions)
+
+Algorithm 2:
+Sum: 767141
+Execution Time: 5477.9744 (MilliSeconds)
+
+Algorithm 3:
+Sum: 767141
+Execution Time: 23.5902 (MilliSeconds)
+
+Algorithm 4:
+Sum: 767141
+Execution Time: 3.6853 (MilliSeconds)
+

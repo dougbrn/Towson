@@ -1,0 +1,99 @@
+===========
+Sample Size (N) = 5000
+===========
+
+Algorithm 1:
+Sum: 175756
+Execution Time: 9799.267 (MilliSeconds)
+
+Algorithm 2:
+Sum: 175756
+Execution Time: 8.0485 (MilliSeconds)
+
+Algorithm 3:
+Sum: 175756
+Execution Time: 1.0279 (MilliSeconds)
+
+Algorithm 4:
+Sum: 175756
+Execution Time: 0.1205 (MilliSeconds)
+
+===========
+Sample Size (N) = 10000
+===========
+
+Algorithm 1:
+Sum: 222824
+Execution Time: 78472.9266 (MilliSeconds)
+
+Algorithm 2:
+Sum: 222824
+Execution Time: 22.2075 (MilliSeconds)
+
+Algorithm 3:
+Sum: 222824
+Execution Time: 1.5697 (MilliSeconds)
+
+Algorithm 4:
+Sum: 222824
+Execution Time: 0.2376 (MilliSeconds)
+
+===========
+Sample Size (N) = 50000
+===========
+
+Algorithm 1:
+Sum: N/A
+Execution Time: N/A (>15 minutes, so terminated as per the assignment instructions)
+
+Algorithm 2:
+Sum: 1547330
+Execution Time: 352.0447 (MilliSeconds)
+
+Algorithm 3:
+Sum: 1547330
+Execution Time: 6.072 (MilliSeconds)
+
+Algorithm 4:
+Sum: 1547330
+Execution Time: 1.1735 (MilliSeconds)
+
+===========
+Sample Size (N) = 100000
+===========
+
+Algorithm 1:
+Sum: N/A
+Execution Time: N/A (>15 minutes, so terminated as per the assignment instructions)
+
+Algorithm 2:
+Sum: 625473
+Execution Time: 1371.1461 (MilliSeconds)
+
+Algorithm 3:
+Sum: 625473
+Execution Time: 11.6173 (MilliSeconds)
+
+Algorithm 4:
+Sum: 625473
+Execution Time: 2.0778 (MilliSeconds)
+
+===========
+Sample Size (N) = 200000
+===========
+
+Algorithm 1:
+Sum: N/A
+Execution Time: N/A (>15 minutes, so terminated as per the assignment instructions)
+
+Algorithm 2:
+Sum: 767141
+Execution Time: 5477.9744 (MilliSeconds)
+
+Algorithm 3:
+Sum: 767141
+Execution Time: 23.5902 (MilliSeconds)
+
+Algorithm 4:
+Sum: 767141
+Execution Time: 3.6853 (MilliSeconds)
