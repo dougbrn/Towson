@@ -1,7 +1,7 @@
 import numpy as np
 
 class Node_BST():
-    #Initialize a node, has a value, left child and right child
+    #Initialize a node, has a value, depth, left child, and right child
     def __init__(self, value=None,depth=None):
         self.value = value
         self.depth = depth
