@@ -2,12 +2,22 @@ import numpy as np
 
 class Node_AVL():
     #Initialize an AVL node, has a value, depth, height, balance, left child, and right child
-    def __init__(self, value=None,depth=None,height=None):
+    def __init__(self, value=None,depth=None):
         self.value = value
         self.depth = depth
-        self.height = height
+        self.height = 0
         self.left = None
         self.right = None
+
+    def search(self, search_value):
+        #Return when found or if the node is empty
+        if (self.value == search_value) or (self.value == None):
+            return self
+        #Recursively search children
+        elif self.value > search_value:
+            return self.left.search(search_value)
+        else:
+            return self.right.search(search_value)
 
     def findBalance(self):
         # The balance of a node is defined as the height of the left subtree - the height of the right subtree
@@ -19,8 +29,20 @@ class Node_AVL():
         if not self.right:
             right_height = -1 # An empty node has height of -1
         else:
-            right_height = self.left.height 
+            right_height = self.right.height 
         return left_height - right_height
+
+    def findHeight(self):
+        #The height of a node is the maximum of {left tree height, right tree height} + 1
+        if not self.left:
+            left_height = -1 # An empty node has height of -1
+        else:
+            left_height = self.left.height
+        if not self.right:
+            right_height = -1 # An empty node has height of -1
+        else:
+            right_height = self.right.height 
+        return max(left_height,right_height) + 1
 
     def insert(self, value, depth=0):
         #if root is empty, insert value at root
@@ -32,20 +54,42 @@ class Node_AVL():
         #Do not insert values already in AVL Tree
         elif self.value == value:
             return
+
         elif value < self.value:
             depth+=1
             if self.left is None:
-                self.left = Node_AVL(value,depth)
+                self.left = Node_AVL(value,depth) # insert node to the left
             else:
                 self.left.insert(value,depth)
-            return
+
         elif value > self.value:
             depth+=1
             if self.right is None:
-                self.right = Node_AVL(value,depth)
+                self.right = Node_AVL(value,depth) # insert node to the right
             else:
                 self.right.insert(value,depth)
-            return
+
+        # Update the node heights after insertion
+        self.height = self.findHeight()
+
+        # Check for node balance after insertion
+        balance = self.findBalance()
+
+        # Do AVL Tree Balance Resolution
+        # 4 Cases:
+
+        #Case 1 - Left Left
+        #Right Rotation
+
+        #Case 2 - Left Right
+        #Left Rotation -> Right Rotation
+
+        #Case 3 - Right Right
+        #Left Rotation
+
+        #Case 4 - Right Left
+        # Right Rotation -> Left Rotation
+
 
     
 
@@ -91,10 +135,14 @@ class Node_AVL():
 
 if __name__ == "__main__":
     n=10
+    np.random.seed(0) #set a seed for testing sake
     rand_ints = np.random.randint(0,50000,n)
+    print(rand_ints)
     AVL = Node_AVL()
     for rand_int in rand_ints:
         AVL.insert(rand_int)
     avg_depth = AVL.calc_avg_depth()
+    print(AVL.traverse('inorder'))
     print(f"Average Depth of AVL Tree (n={n}): {avg_depth}")
+
         
