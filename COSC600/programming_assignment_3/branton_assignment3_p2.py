@@ -9,6 +9,27 @@ class Node_AVL():
         self.left = None
         self.right = None
 
+    def findBalance(self):
+        # The balance of a node is defined as the height of the left subtree - the height of the right subtree
+        # Should be in {-1,0,1} or a rebalance is needed
+        if not self.left:
+            left_height = -1 # An empty node has height of -1
+        else:
+            left_height = self.left.height
+        if not self.right:
+            right_height = -1 # An empty node has height of -1
+        else:
+            right_height = self.left.height 
+        return left - right
+
+    def insert(self, value):
+        #if root is empty, insert value at root
+        if self.value == None:
+            self.value = value
+            self.depth = 0
+            self.height = 0
+            return
+
     def traverse(self, order, val_list=[]):
         # Order is one of inorder, preorder, or postorder
         if order == 'preorder':
