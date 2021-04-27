@@ -20,9 +20,9 @@ class Node_AVL():
             right_height = -1 # An empty node has height of -1
         else:
             right_height = self.left.height 
-        return left - right
+        return left_height - right_height
 
-    def insert(self, value):
+    def insert(self, value, depth=0):
         #if root is empty, insert value at root
         if self.value == None:
             self.value = value
@@ -93,4 +93,8 @@ if __name__ == "__main__":
     n=10
     rand_ints = np.random.randint(0,50000,n)
     AVL = Node_AVL()
+    for rand_int in rand_ints:
+        AVL.insert(rand_int)
+    avg_depth = AVL.calc_avg_depth()
+    print(f"Average Depth of AVL Tree (n={n}): {avg_depth}")
         
