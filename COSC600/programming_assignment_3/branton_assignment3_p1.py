@@ -24,24 +24,22 @@ class Node_BST():
         if self.value == None:
             self.value = value
             self.depth = 0
-            return
         #Do not insert values already in BST
         elif self.value == value:
-            return
+            pass
         elif value < self.value:
             depth+=1
             if self.left is None:
-                self.left = Node_BST(value,depth)
+                self.left = Node_BST(value,depth) # insert node to the left
             else:
                 self.left.insert(value,depth)
-            return
         elif value > self.value:
             depth+=1
             if self.right is None:
-                self.right = Node_BST(value,depth)
+                self.right = Node_BST(value,depth) # insert node to the right
             else:
                 self.right.insert(value,depth)
-            return
+        return    
 
     def delete(self,val):
         #search for the node to delete
@@ -69,9 +67,19 @@ class Node_BST():
             max_left_child = max_left_child.right
         self.value = max_left_child.value
         self.left = self.left.delete(max_left_child.value)
+
+        self.updateDepths()
         return self
         
-        
+    def updateDepths(self,dist_from_root=0):
+        # update depths for all children of a node
+        # needed for when deletions occur
+        if self.value is not None:
+            self.depth = dist_from_root
+        if self.left is not None: 
+            self.left.updateDepths(dist_from_root+1)
+        if self.right is not None:
+            self.right.updateDepths(dist_from_root+1)    
         
     def traverse(self, order, val_list=[]):
         # Order is one of inorder, preorder, or postorder
@@ -116,9 +124,13 @@ class Node_BST():
 
 if __name__ == "__main__":
     n=5000
+    np.random.seed(0) #set a seed for testing
     rand_ints = np.random.randint(0,50000,n)
     BST = Node_BST()
     for rand_int in rand_ints:
         BST.insert(rand_int)
+    #BST = BST.delete(rand_ints[0])
     avg_depth = BST.calc_avg_depth()
     print(f"Average Depth of Binary Search Tree (n={n}): {avg_depth}")
+    #print(BST.traverse('preorder'))
+    
