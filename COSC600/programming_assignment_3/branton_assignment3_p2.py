@@ -29,6 +29,25 @@ class Node_AVL():
             self.depth = 0
             self.height = 0
             return
+        #Do not insert values already in AVL Tree
+        elif self.value == value:
+            return
+        elif value < self.value:
+            depth+=1
+            if self.left is None:
+                self.left = Node_AVL(value,depth)
+            else:
+                self.left.insert(value,depth)
+            return
+        elif value > self.value:
+            depth+=1
+            if self.right is None:
+                self.right = Node_AVL(value,depth)
+            else:
+                self.right.insert(value,depth)
+            return
+
+    
 
     def traverse(self, order, val_list=[]):
         # Order is one of inorder, preorder, or postorder
