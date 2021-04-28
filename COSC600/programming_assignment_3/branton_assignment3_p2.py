@@ -159,7 +159,7 @@ class AVL_Tree():
 
     def calc_avg_depth(self, root):
         depths = self.get_depths(root,[])
-        print(depths)
+        #print(depths)
         return np.mean(depths)
 
 if __name__ == "__main__":
