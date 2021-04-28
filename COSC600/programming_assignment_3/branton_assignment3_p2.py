@@ -53,6 +53,7 @@ class AVL_Tree():
         # Insert node into proper place in AVL tree
         if not root:
             return Node_AVL(key,depth=depth)
+
         elif key < root.val:
             depth+=1
             root.left = self.insert(root.left, key,depth=depth)
@@ -60,29 +61,28 @@ class AVL_Tree():
             depth+=1
             root.right = self.insert(root.right, key,depth=depth)
  
-        # Update the node heights after insertion
+        # Update the node heights after insertion and check for balance
         root.height = self.findHeight(root)
- 
-        # Check for node balance after insertion
         balance = self.findBalance(root)
  
         # Do AVL Tree Balance Resolution
         # 4 Cases:
-
-        # Case 1 - Left Left
+        #Case 1 - Left Left
+        #Right Rotation
         if balance > 1 and key < root.left.val:
             return self.right_rotate(root)
-
-        # Case 2 - Left Right
+        #Case 2 - Left Right
+        #Left Rotation -> Right Rotation
         if balance > 1 and key > root.left.val:
             root.left = self.left_rotate(root.left)
             return self.right_rotate(root)
- 
-        # Case 3 - Right Right
+        #Case 3 - Right Right
+        #Left Rotation
         if balance < -1 and key > root.right.val:
             return self.left_rotate(root)
- 
-        # Case 4 - Right Left
+
+        #Case 4 - Right Left
+        # Right Rotation -> Left Rotation
         if balance < -1 and key < root.right.val:
             root.right = self.right_rotate(root.right)
             return self.left_rotate(root)
@@ -101,7 +101,6 @@ class AVL_Tree():
         z.height = self.findHeight(z)
         y.height = self.findHeight(y)
 
-        #self.updateDepths(y) #update depth information
         return y
 
     
@@ -117,8 +116,6 @@ class AVL_Tree():
         z.height = self.findHeight(z)
         y.height = self.findHeight(y)
 
-        #self.updateDepths(y)
-        #print(y.val)
         return y
 
     def traverse(self, root, order, val_list=[]):
@@ -171,7 +168,7 @@ if __name__ == "__main__":
     root = None
     for rand_int in rand_ints:
         root = AVL.insert(root, rand_int)
-        root = AVL.updateDepths(root)
+        root = AVL.updateDepths(root) #needed for depth information
     #print(AVL.traverse(root,'preorder',[]))
     avg_depth = AVL.calc_avg_depth(root)
     print(f"Average Depth of AVL Tree (n={n}): {avg_depth}")
