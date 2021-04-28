@@ -39,7 +39,7 @@ class Node_BST():
                 self.right = Node_BST(value,depth) # insert node to the right
             else:
                 self.right.insert(value,depth)
-        return    
+        return self   
 
     def delete(self,val):
         #search for the node to delete
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     rand_ints = np.random.randint(0,50000,n)
     BST = Node_BST()
     for rand_int in rand_ints:
-        BST.insert(rand_int)
+        BST = BST.insert(rand_int)
     #BST = BST.delete(rand_ints[0])
     avg_depth = BST.calc_avg_depth()
     print(f"Average Depth of Binary Search Tree (n={n}): {avg_depth}")
