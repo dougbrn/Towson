@@ -1,0 +1,7 @@
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE S
+SET status = status + 5
+WHERE S.city = 'PARIS';
+
+SELECT * FROM S;
