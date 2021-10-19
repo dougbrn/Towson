@@ -1,0 +1,338 @@
+   1              		.file	"hello.c"
+   2              		.intel_syntax noprefix
+   3              		.text
+   4              	.Ltext0:
+   5              		.section	.rodata
+   6              	.LC0:
+   7 0000 48656C6C 		.string	"Hello World"
+   7      6F20576F 
+   7      726C6400 
+   8              	.LC1:
+   9 000c 0A00     		.string	"\n"
+  10              	.LC2:
+  11 000e 6C323A20 		.string	"l2: %lx \n"
+  11      256C7820 
+  11      0A00
+  12              	.LC3:
+  13 0018 69313A20 		.string	"i1: %x \n"
+  13      2578200A 
+  13      00
+  14              	.LC4:
+  15 0021 69313A20 		.string	"i1: %10x \n"
+  15      25313078 
+  15      200A00
+  16              	.LC5:
+  17 002c 69313A20 		.string	"i1: %4x \n"
+  17      25347820 
+  17      0A00
+  18              	.LC6:
+  19 0036 63313A20 		.string	"c1: %c \n"
+  19      2563200A 
+  19      00
+  20              	.LC7:
+  21 003f 73747269 		.string	"string: %s \n"
+  21      6E673A20 
+  21      2573200A 
+  21      00
+  22              	.LC8:
+  23 004c 7200     		.string	"r"
+  24              	.LC9:
+  25 004e 696E7075 		.string	"input.txt"
+  25      742E7478 
+  25      7400
+  26              	.LC10:
+  27 0058 7700     		.string	"w"
+  28              	.LC11:
+  29 005a 6F757470 		.string	"output.txt"
+  29      75742E74 
+  29      787400
+  30              		.text
+  31              		.globl	main
+  33              	main:
+  34              	.LFB6:
+  35              		.file 1 "hello.c"
+   1:hello.c       **** //This is first program 
+   2:hello.c       **** //Dr. Karne 
+   3:hello.c       **** //hello.c 
+   4:hello.c       **** #include <stdio.h>
+   5:hello.c       **** #include <stdlib.h>
+   6:hello.c       **** 
+   7:hello.c       **** int main (int argc, char **argv) 
+   8:hello.c       **** {
+  36              		.loc 1 8 1
+  37              		.cfi_startproc
+  38 0000 F30F1EFA 		endbr64
+  39 0004 55       		push	rbp
+  40              		.cfi_def_cfa_offset 16
+  41              		.cfi_offset 6, -16
+  42 0005 4889E5   		mov	rbp, rsp
+  43              		.cfi_def_cfa_register 6
+  44 0008 4883C480 		add	rsp, -128
+  45 000c 897D8C   		mov	DWORD PTR -116[rbp], edi
+  46 000f 48897580 		mov	QWORD PTR -128[rbp], rsi
+  47              		.loc 1 8 1
+  48 0013 64488B04 		mov	rax, QWORD PTR fs:40
+  48      25280000 
+  48      00
+  49 001c 488945F8 		mov	QWORD PTR -8[rbp], rax
+  50 0020 31C0     		xor	eax, eax
+   9:hello.c       ****    char c1; 
+  10:hello.c       ****    unsigned char c2; 
+  11:hello.c       ****    int i1=0; 
+  51              		.loc 1 11 8
+  52 0022 C7459C00 		mov	DWORD PTR -100[rbp], 0
+  52      000000
+  12:hello.c       ****    long l2=0;
+  53              		.loc 1 12 9
+  54 0029 48C745A0 		mov	QWORD PTR -96[rbp], 0
+  54      00000000 
+  13:hello.c       ****    char *cptr; 
+  14:hello.c       ****    int *iptr; 
+  15:hello.c       ****    long *lptr; 
+  16:hello.c       ****    char array1[40] = "This is a string";
+  55              		.loc 1 16 9
+  56 0031 48B85468 		movabs	rax, 2338328219631577172
+  56      69732069 
+  56      7320
+  57 003b 48BA6120 		movabs	rdx, 7453010373645639777
+  57      73747269 
+  57      6E67
+  58 0045 488945D0 		mov	QWORD PTR -48[rbp], rax
+  59 0049 488955D8 		mov	QWORD PTR -40[rbp], rdx
+  60 004d 48C745E0 		mov	QWORD PTR -32[rbp], 0
+  60      00000000 
+  61 0055 48C745E8 		mov	QWORD PTR -24[rbp], 0
+  61      00000000 
+  62 005d 48C745F0 		mov	QWORD PTR -16[rbp], 0
+  62      00000000 
+  17:hello.c       **** 
+  18:hello.c       ****    cptr = (char *)malloc(200); 
+  63              		.loc 1 18 19
+  64 0065 BFC80000 		mov	edi, 200
+  64      00
+  65 006a E8000000 		call	malloc@PLT
+  65      00
+  66 006f 488945A8 		mov	QWORD PTR -88[rbp], rax
+  19:hello.c       ****    iptr = (int *)malloc(200); 
+  67              		.loc 1 19 18
+  68 0073 BFC80000 		mov	edi, 200
+  68      00
+  69 0078 E8000000 		call	malloc@PLT
+  69      00
+  70 007d 488945B0 		mov	QWORD PTR -80[rbp], rax
+  20:hello.c       ****    lptr = (long *)malloc(200); 
+  71              		.loc 1 20 19
+  72 0081 BFC80000 		mov	edi, 200
+  72      00
+  73 0086 E8000000 		call	malloc@PLT
+  73      00
+  74 008b 488945B8 		mov	QWORD PTR -72[rbp], rax
+  21:hello.c       **** 
+  22:hello.c       ****    c1 = 'X'; 
+  75              		.loc 1 22 7
+  76 008f C6459958 		mov	BYTE PTR -103[rbp], 88
+  23:hello.c       ****    c2 = 0x44; 
+  77              		.loc 1 23 7
+  78 0093 C6459A44 		mov	BYTE PTR -102[rbp], 68
+  24:hello.c       ****    i1 = 0x100; 
+  79              		.loc 1 24 7
+  80 0097 C7459C00 		mov	DWORD PTR -100[rbp], 256
+  80      010000
+  25:hello.c       ****    l2 = 0x0123456789abcdef; 
+  81              		.loc 1 25 7
+  82 009e 48B8EFCD 		movabs	rax, 81985529216486895
+  82      AB896745 
+  82      2301
+  83 00a8 488945A0 		mov	QWORD PTR -96[rbp], rax
+  26:hello.c       **** 
+  27:hello.c       ****    *iptr = 0x2000; 
+  84              		.loc 1 27 10
+  85 00ac 488B45B0 		mov	rax, QWORD PTR -80[rbp]
+  86 00b0 C7000020 		mov	DWORD PTR [rax], 8192
+  86      0000
+  28:hello.c       ****    *lptr = 0x88889999aaaabbbb; 
+  87              		.loc 1 28 10
+  88 00b6 488B45B8 		mov	rax, QWORD PTR -72[rbp]
+  89 00ba 48B9BBBB 		movabs	rcx, -8608461802446341189
+  89      AAAA9999 
+  89      8888
+  90 00c4 488908   		mov	QWORD PTR [rax], rcx
+  29:hello.c       **** 
+  30:hello.c       ****    printf("Hello World\n"); 
+  91              		.loc 1 30 4
+  92 00c7 488D3D00 		lea	rdi, .LC0[rip]
+  92      000000
+  93 00ce E8000000 		call	puts@PLT
+  93      00
+  31:hello.c       ****    printf("\n\n"); 
+  94              		.loc 1 31 4
+  95 00d3 488D3D00 		lea	rdi, .LC1[rip]
+  95      000000
+  96 00da E8000000 		call	puts@PLT
+  96      00
+  32:hello.c       ****    printf("l2: %lx \n", l2); 
+  97              		.loc 1 32 4
+  98 00df 488B45A0 		mov	rax, QWORD PTR -96[rbp]
+  99 00e3 4889C6   		mov	rsi, rax
+ 100 00e6 488D3D00 		lea	rdi, .LC2[rip]
+ 100      000000
+ 101 00ed B8000000 		mov	eax, 0
+ 101      00
+ 102 00f2 E8000000 		call	printf@PLT
+ 102      00
+  33:hello.c       ****    printf("i1: %x \n", i1); 
+ 103              		.loc 1 33 4
+ 104 00f7 8B459C   		mov	eax, DWORD PTR -100[rbp]
+ 105 00fa 89C6     		mov	esi, eax
+ 106 00fc 488D3D00 		lea	rdi, .LC3[rip]
+ 106      000000
+ 107 0103 B8000000 		mov	eax, 0
+ 107      00
+ 108 0108 E8000000 		call	printf@PLT
+ 108      00
+  34:hello.c       ****    printf("i1: %10x \n", i1); 
+ 109              		.loc 1 34 4
+ 110 010d 8B459C   		mov	eax, DWORD PTR -100[rbp]
+ 111 0110 89C6     		mov	esi, eax
+ 112 0112 488D3D00 		lea	rdi, .LC4[rip]
+ 112      000000
+ 113 0119 B8000000 		mov	eax, 0
+ 113      00
+ 114 011e E8000000 		call	printf@PLT
+ 114      00
+  35:hello.c       ****    printf("i1: %4x \n", i1); 
+ 115              		.loc 1 35 4
+ 116 0123 8B459C   		mov	eax, DWORD PTR -100[rbp]
+ 117 0126 89C6     		mov	esi, eax
+ 118 0128 488D3D00 		lea	rdi, .LC5[rip]
+ 118      000000
+ 119 012f B8000000 		mov	eax, 0
+ 119      00
+ 120 0134 E8000000 		call	printf@PLT
+ 120      00
+  36:hello.c       ****    printf("c1: %c \n", c1); 
+ 121              		.loc 1 36 4
+ 122 0139 0FBE4599 		movsx	eax, BYTE PTR -103[rbp]
+ 123 013d 89C6     		mov	esi, eax
+ 124 013f 488D3D00 		lea	rdi, .LC6[rip]
+ 124      000000
+ 125 0146 B8000000 		mov	eax, 0
+ 125      00
+ 126 014b E8000000 		call	printf@PLT
+ 126      00
+  37:hello.c       ****    printf("string: %s \n", array1); 
+ 127              		.loc 1 37 4
+ 128 0150 488D45D0 		lea	rax, -48[rbp]
+ 129 0154 4889C6   		mov	rsi, rax
+ 130 0157 488D3D00 		lea	rdi, .LC7[rip]
+ 130      000000
+ 131 015e B8000000 		mov	eax, 0
+ 131      00
+ 132 0163 E8000000 		call	printf@PLT
+ 132      00
+  38:hello.c       **** 
+  39:hello.c       ****    /*Copy from input.txt to output.txt */
+  40:hello.c       ****    FILE *input = fopen("input.txt","r");
+ 133              		.loc 1 40 18
+ 134 0168 488D3500 		lea	rsi, .LC8[rip]
+ 134      000000
+ 135 016f 488D3D00 		lea	rdi, .LC9[rip]
+ 135      000000
+ 136 0176 E8000000 		call	fopen@PLT
+ 136      00
+ 137 017b 488945C0 		mov	QWORD PTR -64[rbp], rax
+  41:hello.c       ****    FILE *output = fopen("output.txt", "w");
+ 138              		.loc 1 41 19
+ 139 017f 488D3500 		lea	rsi, .LC10[rip]
+ 139      000000
+ 140 0186 488D3D00 		lea	rdi, .LC11[rip]
+ 140      000000
+ 141 018d E8000000 		call	fopen@PLT
+ 141      00
+ 142 0192 488945C8 		mov	QWORD PTR -56[rbp], rax
+  42:hello.c       **** 
+  43:hello.c       ****    char ch;
+  44:hello.c       **** 
+  45:hello.c       ****    while((ch = fgetc(input)) != EOF)
+ 143              		.loc 1 45 9
+ 144 0196 EB12     		jmp	.L2
+ 145              	.L3:
+  46:hello.c       ****       fputc(ch, output);
+ 146              		.loc 1 46 7
+ 147 0198 0FBE459B 		movsx	eax, BYTE PTR -101[rbp]
+ 148 019c 488B55C8 		mov	rdx, QWORD PTR -56[rbp]
+ 149 01a0 4889D6   		mov	rsi, rdx
+ 150 01a3 89C7     		mov	edi, eax
+ 151 01a5 E8000000 		call	fputc@PLT
+ 151      00
+ 152              	.L2:
+  45:hello.c       ****       fputc(ch, output);
+ 153              		.loc 1 45 16
+ 154 01aa 488B45C0 		mov	rax, QWORD PTR -64[rbp]
+ 155 01ae 4889C7   		mov	rdi, rax
+ 156 01b1 E8000000 		call	fgetc@PLT
+ 156      00
+  45:hello.c       ****       fputc(ch, output);
+ 157              		.loc 1 45 14
+ 158 01b6 88459B   		mov	BYTE PTR -101[rbp], al
+  45:hello.c       ****       fputc(ch, output);
+ 159              		.loc 1 45 9
+ 160 01b9 807D9BFF 		cmp	BYTE PTR -101[rbp], -1
+ 161 01bd 75D9     		jne	.L3
+  47:hello.c       **** 
+  48:hello.c       ****    fclose(input);
+ 162              		.loc 1 48 4
+ 163 01bf 488B45C0 		mov	rax, QWORD PTR -64[rbp]
+ 164 01c3 4889C7   		mov	rdi, rax
+ 165 01c6 E8000000 		call	fclose@PLT
+ 165      00
+  49:hello.c       ****    fclose(output);
+ 166              		.loc 1 49 4
+ 167 01cb 488B45C8 		mov	rax, QWORD PTR -56[rbp]
+ 168 01cf 4889C7   		mov	rdi, rax
+ 169 01d2 E8000000 		call	fclose@PLT
+ 169      00
+  50:hello.c       **** 
+  51:hello.c       **** 
+  52:hello.c       ****    return 0; 
+ 170              		.loc 1 52 11
+ 171 01d7 B8000000 		mov	eax, 0
+ 171      00
+  53:hello.c       **** }
+ 172              		.loc 1 53 1
+ 173 01dc 488B4DF8 		mov	rcx, QWORD PTR -8[rbp]
+ 174 01e0 6448330C 		xor	rcx, QWORD PTR fs:40
+ 174      25280000 
+ 174      00
+ 175 01e9 7405     		je	.L5
+ 176 01eb E8000000 		call	__stack_chk_fail@PLT
+ 176      00
+ 177              	.L5:
+ 178 01f0 C9       		leave
+ 179              		.cfi_def_cfa 7, 8
+ 180 01f1 C3       		ret
+ 181              		.cfi_endproc
+ 182              	.LFE6:
+ 184              	.Letext0:
+ 185              		.file 2 "/usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h"
+ 186              		.file 3 "/usr/include/x86_64-linux-gnu/bits/types.h"
+ 187              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h"
+ 188              		.file 5 "/usr/include/x86_64-linux-gnu/bits/types/FILE.h"
+ 189              		.file 6 "/usr/include/stdio.h"
+ 190              		.file 7 "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h"
+ 1129              		.section	.note.gnu.property,"a"
+ 1130              		.align 8
+ 1131 0000 04000000 		.long	 1f - 0f
+ 1132 0004 10000000 		.long	 4f - 1f
+ 1133 0008 05000000 		.long	 5
+ 1134              	0:
+ 1135 000c 474E5500 		.string	 "GNU"
+ 1136              	1:
+ 1137              		.align 8
+ 1138 0010 020000C0 		.long	 0xc0000002
+ 1139 0014 04000000 		.long	 3f - 2f
+ 1140              	2:
+ 1141 0018 03000000 		.long	 0x3
+ 1142              	3:
+ 1143 001c 00000000 		.align 8
+ 1144              	4:

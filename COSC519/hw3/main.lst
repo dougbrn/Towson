@@ -1,0 +1,249 @@
+   1              		.file	"main.c"
+   2              		.intel_syntax noprefix
+   3              		.text
+   4              	.Ltext0:
+   5              		.section	.rodata
+   6              	.LC0:
+   7 0000 466F726B 		.string	"Fork Failed"
+   7      20466169 
+   7      6C656400 
+   8              	.LC1:
+   9 000c 3D3D3D3D 		.string	"====================="
+   9      3D3D3D3D 
+   9      3D3D3D3D 
+   9      3D3D3D3D 
+   9      3D3D3D3D 
+  10              	.LC2:
+  11 0022 4368696C 		.string	"Child PID: %d\n"
+  11      64205049 
+  11      443A2025 
+  11      640A00
+  12              	.LC3:
+  13 0031 00       		.string	""
+  14              	.LC4:
+  15 0032 2E2F6865 		.string	"./hello"
+  15      6C6C6F00 
+  16              	.LC5:
+  17 003a 416C6C20 		.string	"All Children Complete"
+  17      4368696C 
+  17      6472656E 
+  17      20436F6D 
+  17      706C6574 
+  18              		.text
+  19              		.globl	main
+  21              	main:
+  22              	.LFB6:
+  23              		.file 1 "main.c"
+   1:main.c        **** //COSC 519 HW 3
+   2:main.c        **** //Doug Branton
+   3:main.c        **** 
+   4:main.c        **** #include <stdio.h>
+   5:main.c        **** #include <stdlib.h>
+   6:main.c        **** #include <sys/types.h>
+   7:main.c        **** #include <unistd.h>
+   8:main.c        **** #include <sys/wait.h>
+   9:main.c        **** 
+  10:main.c        **** int main()
+  11:main.c        **** {
+  24              		.loc 1 11 1
+  25              		.cfi_startproc
+  26 0000 F30F1EFA 		endbr64
+  27 0004 55       		push	rbp
+  28              		.cfi_def_cfa_offset 16
+  29              		.cfi_offset 6, -16
+  30 0005 4889E5   		mov	rbp, rsp
+  31              		.cfi_def_cfa_register 6
+  32 0008 4883EC20 		sub	rsp, 32
+  12:main.c        ****     pid_t pid;
+  13:main.c        ****     int count = 0;
+  33              		.loc 1 13 9
+  34 000c C745F000 		mov	DWORD PTR -16[rbp], 0
+  34      000000
+  14:main.c        ****     int n_children = 4;
+  35              		.loc 1 14 9
+  36 0013 C745F404 		mov	DWORD PTR -12[rbp], 4
+  36      000000
+  15:main.c        ****     int i;
+  16:main.c        **** 
+  17:main.c        ****     /* fork a child process */
+  18:main.c        ****     for(i=0; i < n_children; i=i+1){
+  37              		.loc 1 18 10
+  38 001a C745EC00 		mov	DWORD PTR -20[rbp], 0
+  38      000000
+  39              		.loc 1 18 5
+  40 0021 E99F0000 		jmp	.L2
+  40      00
+  41              	.L6:
+  19:main.c        ****         pid = fork();
+  42              		.loc 1 19 15
+  43 0026 E8000000 		call	fork@PLT
+  43      00
+  44 002b 8945F8   		mov	DWORD PTR -8[rbp], eax
+  20:main.c        **** 
+  21:main.c        ****         if (pid < 0)
+  45              		.loc 1 21 12
+  46 002e 837DF800 		cmp	DWORD PTR -8[rbp], 0
+  47 0032 792A     		jns	.L3
+  22:main.c        ****         { /* error occured */
+  23:main.c        ****             fprintf(stderr, "Fork Failed");
+  48              		.loc 1 23 13
+  49 0034 488B0500 		mov	rax, QWORD PTR stderr[rip]
+  49      000000
+  50 003b 4889C1   		mov	rcx, rax
+  51 003e BA0B0000 		mov	edx, 11
+  51      00
+  52 0043 BE010000 		mov	esi, 1
+  52      00
+  53 0048 488D3D00 		lea	rdi, .LC0[rip]
+  53      000000
+  54 004f E8000000 		call	fwrite@PLT
+  54      00
+  24:main.c        ****             return 1;
+  55              		.loc 1 24 20
+  56 0054 B8010000 		mov	eax, 1
+  56      00
+  57 0059 E9A30000 		jmp	.L4
+  57      00
+  58              	.L3:
+  25:main.c        ****         }
+  26:main.c        **** 
+  27:main.c        ****         else if (pid == 0)
+  59              		.loc 1 27 17
+  60 005e 837DF800 		cmp	DWORD PTR -8[rbp], 0
+  61 0062 755D     		jne	.L5
+  62              	.LBB2:
+  28:main.c        ****         { /* child process */
+  29:main.c        ****             sleep(i); //sleep i seconds so that each process returns full output separately
+  63              		.loc 1 29 13
+  64 0064 8B45EC   		mov	eax, DWORD PTR -20[rbp]
+  65 0067 89C7     		mov	edi, eax
+  66 0069 E8000000 		call	sleep@PLT
+  66      00
+  30:main.c        ****             int child_pid = getpid();
+  67              		.loc 1 30 29
+  68 006e E8000000 		call	getpid@PLT
+  68      00
+  69 0073 8945FC   		mov	DWORD PTR -4[rbp], eax
+  31:main.c        ****             printf("=====================\n");
+  70              		.loc 1 31 13
+  71 0076 488D3D00 		lea	rdi, .LC1[rip]
+  71      000000
+  72 007d E8000000 		call	puts@PLT
+  72      00
+  32:main.c        ****             printf("Child PID: %d\n", child_pid);
+  73              		.loc 1 32 13
+  74 0082 8B45FC   		mov	eax, DWORD PTR -4[rbp]
+  75 0085 89C6     		mov	esi, eax
+  76 0087 488D3D00 		lea	rdi, .LC2[rip]
+  76      000000
+  77 008e B8000000 		mov	eax, 0
+  77      00
+  78 0093 E8000000 		call	printf@PLT
+  78      00
+  33:main.c        ****             printf("=====================\n");
+  79              		.loc 1 33 13
+  80 0098 488D3D00 		lea	rdi, .LC1[rip]
+  80      000000
+  81 009f E8000000 		call	puts@PLT
+  81      00
+  34:main.c        ****             execlp("./hello", "", NULL);
+  82              		.loc 1 34 13
+  83 00a4 BA000000 		mov	edx, 0
+  83      00
+  84 00a9 488D3500 		lea	rsi, .LC3[rip]
+  84      000000
+  85 00b0 488D3D00 		lea	rdi, .LC4[rip]
+  85      000000
+  86 00b7 B8000000 		mov	eax, 0
+  86      00
+  87 00bc E8000000 		call	execlp@PLT
+  87      00
+  88              	.L5:
+  89              	.LBE2:
+  18:main.c        ****         pid = fork();
+  90              		.loc 1 18 31 discriminator 2
+  91 00c1 8345EC01 		add	DWORD PTR -20[rbp], 1
+  92              	.L2:
+  18:main.c        ****         pid = fork();
+  93              		.loc 1 18 5 discriminator 1
+  94 00c5 8B45EC   		mov	eax, DWORD PTR -20[rbp]
+  95 00c8 3B45F4   		cmp	eax, DWORD PTR -12[rbp]
+  96 00cb 0F8C55FF 		jl	.L6
+  96      FFFF
+  35:main.c        ****         }
+  36:main.c        **** 
+  37:main.c        ****         
+  38:main.c        ****     }
+  39:main.c        **** 
+  40:main.c        ****     for(i=0;i<n_children;i=i+1) //Have a wait loop that has n_children number of waits
+  97              		.loc 1 40 10
+  98 00d1 C745EC00 		mov	DWORD PTR -20[rbp], 0
+  98      000000
+  99              		.loc 1 40 5
+ 100 00d8 EB0E     		jmp	.L7
+ 101              	.L8:
+  41:main.c        ****     { /* Parent Process */
+  42:main.c        ****         /* parent will wait for child to complete */
+  43:main.c        ****         wait(NULL);
+ 102              		.loc 1 43 9 discriminator 3
+ 103 00da BF000000 		mov	edi, 0
+ 103      00
+ 104 00df E8000000 		call	wait@PLT
+ 104      00
+  40:main.c        ****     { /* Parent Process */
+ 105              		.loc 1 40 27 discriminator 3
+ 106 00e4 8345EC01 		add	DWORD PTR -20[rbp], 1
+ 107              	.L7:
+  40:main.c        ****     { /* Parent Process */
+ 108              		.loc 1 40 5 discriminator 1
+ 109 00e8 8B45EC   		mov	eax, DWORD PTR -20[rbp]
+ 110 00eb 3B45F4   		cmp	eax, DWORD PTR -12[rbp]
+ 111 00ee 7CEA     		jl	.L8
+  44:main.c        ****     }
+  45:main.c        ****     printf("All Children Complete\n");
+ 112              		.loc 1 45 5
+ 113 00f0 488D3D00 		lea	rdi, .LC5[rip]
+ 113      000000
+ 114 00f7 E8000000 		call	puts@PLT
+ 114      00
+  46:main.c        ****     
+  47:main.c        **** 
+  48:main.c        ****     return 0;
+ 115              		.loc 1 48 12
+ 116 00fc B8000000 		mov	eax, 0
+ 116      00
+ 117              	.L4:
+  49:main.c        **** }
+ 118              		.loc 1 49 1
+ 119 0101 C9       		leave
+ 120              		.cfi_def_cfa 7, 8
+ 121 0102 C3       		ret
+ 122              		.cfi_endproc
+ 123              	.LFE6:
+ 125              	.Letext0:
+ 126              		.file 2 "/usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h"
+ 127              		.file 3 "/usr/include/x86_64-linux-gnu/bits/types.h"
+ 128              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h"
+ 129              		.file 5 "/usr/include/x86_64-linux-gnu/bits/types/FILE.h"
+ 130              		.file 6 "/usr/include/stdio.h"
+ 131              		.file 7 "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h"
+ 132              		.file 8 "/usr/include/x86_64-linux-gnu/sys/types.h"
+ 133              		.file 9 "/usr/include/unistd.h"
+ 134              		.file 10 "/usr/include/x86_64-linux-gnu/bits/getopt_core.h"
+ 135              		.file 11 "/usr/include/signal.h"
+ 1070              		.section	.note.gnu.property,"a"
+ 1071              		.align 8
+ 1072 0000 04000000 		.long	 1f - 0f
+ 1073 0004 10000000 		.long	 4f - 1f
+ 1074 0008 05000000 		.long	 5
+ 1075              	0:
+ 1076 000c 474E5500 		.string	 "GNU"
+ 1077              	1:
+ 1078              		.align 8
+ 1079 0010 020000C0 		.long	 0xc0000002
+ 1080 0014 04000000 		.long	 3f - 2f
+ 1081              	2:
+ 1082 0018 03000000 		.long	 0x3
+ 1083              	3:
+ 1084 001c 00000000 		.align 8
+ 1085              	4:

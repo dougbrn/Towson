@@ -1,0 +1,15 @@
+total 3272
+drwxrwxr-x 4 doug doug    4096 Sep 21 17:59 .
+drwxrwxr-x 3 doug doug    4096 Sep  7 17:58 ..
+-rw-rw-r-- 1 doug doug   12815 Sep 21 17:53 branton_hw1_mk2.odt
+-rw-rw-r-- 1 doug doug 1783745 Sep 19 22:19 branton_hw1.odt
+-rw-rw-r-- 1 doug doug 1418388 Sep 19 22:20 branton_hw1.pdf
+drwxrwxr-x 2 doug doug    4096 Sep 19 20:49 data
+drwx------ 2 doug doug    4096 Sep 15 11:12 first
+-rw-rw-r-- 1 doug doug   11208 Sep 19 20:58 first.7z
+-rw-rw-r-- 1 doug doug   81482 Sep 17 17:54 hw1_1.png
+-rw-rw-r-- 1 doug doug       0 Sep 21 17:59 hw1_out.txt
+-rw-rw-r-- 1 doug doug      82 Sep 21 17:53 .~lock.branton_hw1_mk2.odt#
+-rw-rw-r-- 1 doug doug      82 Sep 19 22:19 .~lock.branton_hw1.odt#
+-rwxrwxrwx 1 doug doug     251 Sep 19 22:15 save_sum.sh
+-rw-rw-r-- 1 doug doug       3 Sep 19 22:17 sumfile.txt
